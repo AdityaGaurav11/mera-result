@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mera Result</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eef2ff;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      width: 100%;
-      max-width: 400px;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 { text-align: center; color: #3730a3; margin-top: 0; }
-    .info { text-align: center; color: #555; margin-bottom: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-    th { background: #e0e7ff; }
-    .total {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #15803d;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarkari Updates</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6}
+header{background:#1d4ed8;color:#fff;padding:16px;text-align:center}
+.wrap{max-width:600px;margin:auto;padding:12px}
+input{width:100%;padding:12px;font-size:16px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+.tabs{display:flex;gap:6px;margin:12px 0}
+.tabs button{flex:1;padding:10px;border:0;border-radius:8px;background:#e5e7eb;font-size:15px}
+.tabs button.on{background:#1d4ed8;color:#fff}
+.item{background:#fff;padding:12px;border-radius:10px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.item h3{margin:0 0 6px;font-size:16px}
+.item small{color:#666}
+.item a{display:inline-block;margin-top:8px;background:#16a34a;color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none}
+</style>
 </head>
 <body>
-  <div class="card">
-    <h1>Mera Result</h1>
-    <div class="info">
-      <b>Naam:</b> Aditya Gaurav<br>
-      <b>Class:</b> 10th
-    </div>
-    <table>
-      <tr><th>Subject</th><th>Marks</th></tr>
-      <tr><td>Hindi</td><td>85</td></tr>
-      <tr><td>English</td><td>80</td></tr>
-      <tr><td>Maths</td><td>90</td></tr>
-      <tr><td>Science</td><td>88</td></tr>
-    </table>
-    <div class="total">Total: 343 / 400 ✅</div>
-  </div>
+<header><h2>Sarkari Updates</h2></header>
+<div class="wrap">
+<input id="q" placeholder="Search karo...">
+<div class="tabs">
+<button data-t="jobs" class="on">Jobs</button>
+<button data-t="results">Result</button>
+<button data-t="admit">Admit Card</button>
+</div>
+<div id="list">Loading...</div>
+</div>
+<script>
+let data={},tab="jobs";
+fetch("data.json").then(r=>r.json()).then(d=>{data=d;show()}).catch(()=>{document.getElementById("list").textContent="Data load nahi hua"});
+function show(){
+ const q=document.getElementById("q").value.toLowerCase();
+ const items=(data[tab]||[]).filter(i=>i.title.toLowerCase().includes(q));
+ document.getElementById("list").innerHTML=items.length?items.map(i=>`<div class="item"><h3>${i.title}</h3><small>Date: ${i.date}</small><br><a href="${i.link}" target="_blank" rel="noopener">Official Link</a></div>`).join(""):"Kuch nahi mila";
+}
+document.getElementById("q").oninput=show;
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");show()});
+</script>
 </body>
 </html>
