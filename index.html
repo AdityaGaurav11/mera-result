@@ -3,42 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sarkari Updates</title>
+<title>Mera Sarkari Portal</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6}
-header{background:#1d4ed8;color:#fff;padding:16px;text-align:center}
-.wrap{max-width:600px;margin:auto;padding:12px}
-input{width:100%;padding:12px;font-size:16px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
-.tabs{display:flex;gap:6px;margin:12px 0}
-.tabs button{flex:1;padding:10px;border:0;border-radius:8px;background:#e5e7eb;font-size:15px}
-.tabs button.on{background:#1d4ed8;color:#fff}
-.item{background:#fff;padding:12px;border-radius:10px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-.item h3{margin:0 0 6px;font-size:16px}
-.item small{color:#666}
-.item a{display:inline-block;margin-top:8px;background:#16a34a;color:#fff;padding:8px 14px;border-radius:6px;text-decoration:none}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff}
+header{background:#9f1239;color:#fff;text-align:center;padding:14px}
+header h1{margin:0;font-size:24px}
+header small{opacity:.9}
+nav{background:#000;display:flex;overflow-x:auto}
+nav a{color:#fff;text-decoration:none;padding:12px 14px;font-size:14px;font-weight:bold;white-space:nowrap}
+.ticker{background:#fef3c7;overflow:hidden;white-space:nowrap;padding:8px 0;border-bottom:2px solid #f59e0b}
+.ticker span{display:inline-block;padding-left:100%;animation:scroll 50s linear infinite;font-weight:bold;color:#9f1239}
+@keyframes scroll{to{transform:translateX(-100%)}}
+.search{padding:10px}
+.search input{width:100%;padding:12px;font-size:16px;border:2px solid #9f1239;border-radius:8px}
+.hot{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:0 10px}
+.hot a{color:#fff;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;padding:12px 6px;border-radius:4px}
+.cols{display:grid;grid-template-columns:1fr;gap:10px;padding:10px}
+@media(min-width:800px){.cols{grid-template-columns:repeat(3,1fr)}.hot{grid-template-columns:repeat(4,1fr)}}
+.box{border:2px solid #f59e0b;scroll-margin-top:50px}
+.box h2{margin:0;background:#9f1239;color:#fff;text-align:center;padding:8px;font-size:18px}
+.box ul{margin:0;padding:10px 10px 10px 26px}
+.box li{margin-bottom:10px;font-size:14px}
+.box a{color:#1d4ed8;font-weight:bold}
+.box small{display:block;color:#666}
+footer{background:#000;color:#ccc;text-align:center;padding:14px;font-size:12px;margin-top:10px}
 </style>
 </head>
 <body>
-<header><h2>Sarkari Updates</h2></header>
-<div class="wrap">
-<input id="q" placeholder="Search karo...">
-<div class="tabs">
-<button data-t="jobs" class="on">Jobs</button>
-<button data-t="results">Result</button>
-<button data-t="admit">Admit Card</button>
+<header>
+  <h1>MERA SARKARI PORTAL</h1>
+  <small>Jobs | Result | Admit Card</small>
+</header>
+<nav>
+  <a href="#">Home</a>
+  <a href="#box-jobs">Latest Job</a>
+  <a href="#box-admit">Admit Card</a>
+  <a href="#box-results">Results</a>
+</nav>
+<div class="ticker"><span id="ticker">Loading...</span></div>
+<div class="search"><input id="q" placeholder="Job, result ya admit card search karo..."></div>
+<div class="hot" id="hot"></div>
+<div class="cols">
+  <div class="box" id="box-results"><h2>Result</h2><ul id="l-results"></ul></div>
+  <div class="box" id="box-admit"><h2>Admit Card</h2><ul id="l-admit"></ul></div>
+  <div class="box" id="box-jobs"><h2>Latest Job</h2><ul id="l-jobs"></ul></div>
 </div>
-<div id="list">Loading...</div>
-</div>
+<footer>Disclaimer: Hamesha official website se jaankari ki pushti kar lein.</footer>
 <script>
-let data={},tab="jobs";
-fetch("data.json").then(r=>r.json()).then(d=>{data=d;show()}).catch(()=>{document.getElementById("list").textContent="Data load nahi hua"});
-function show(){
- const q=document.getElementById("q").value.toLowerCase();
- const items=(data[tab]||[]).filter(i=>i.title.toLowerCase().includes(q));
- document.getElementById("list").innerHTML=items.length?items.map(i=>`<div class="item"><h3>${i.title}</h3><small>Date: ${i.date}</small><br><a href="${i.link}" target="_blank" rel="noopener">Official Link</a></div>`).join(""):"Kuch nahi mila";
+let D={};
+const colors=["#65a30d","#1d4ed8","#ea580c","#b91c1c","#dc2626","#16a34a","#c026d3","#0284c7"];
+function li(i){return `<li><a href="${i.link}" target="_blank" rel="noopener">${i.title}</a><small>${i.date||""}</small></li>`}
+function render(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const f=a=>(a||[]).filter(i=>i.title.toLowerCase().includes(q));
+  ["results","admit","jobs"].forEach(k=>{
+    document.getElementById("l-"+k).innerHTML=f(D[k]).map(li).join("")||"<li>Kuch nahi mila</li>";
+  });
 }
-document.getElementById("q").oninput=show;
-document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");show()});
+fetch("data.json").then(r=>r.json()).then(d=>{
+  D=d;
+  const hot=d.hot||(d.jobs||[]).slice(0,4);
+  document.getElementById("hot").innerHTML=hot.map((i,n)=>`<a href="${i.link}" target="_blank" rel="noopener" style="background:${colors[n%colors.length]}">${i.title}</a>`).join("");
+  document.getElementById("ticker").textContent=(d.jobs||[]).map(i=>i.title).join("  ||  ");
+  render();
+}).catch(()=>{document.getElementById("ticker").textContent="Data load nahi hua"});
+document.getElementById("q").oninput=render;
 </script>
 </body>
 </html>
