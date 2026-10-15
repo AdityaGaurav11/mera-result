@@ -1,102 +1,74 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="hi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="MyJob — jobs, results, admit cards and exam updates. Always verify details on official websites.">
-<title>MyJob — Jobs, Results & Admit Cards</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mera Sarkari Portal</title>
 <style>
-:root{--navy:#10233f;--blue:#2457d6;--cyan:#dff7ff;--ink:#17253b;--muted:#64748b;--line:#e2e8f0;--bg:#f6f8fc;--white:#fff;--gold:#ffcb66}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{color:var(--blue)}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
-.topbar{background:#0b1729;color:#dbeafe;font-size:13px;padding:7px 0}.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-header{background:var(--navy);color:white;border-bottom:4px solid var(--gold)}.head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0}.brand{display:flex;gap:13px;align-items:center}.logo{width:48px;height:48px;border-radius:14px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:900}.brand h1{font-size:29px;line-height:1;margin:0;letter-spacing:-.7px}.brand p{margin:6px 0 0;color:#cbd5e1;font-size:13px}.head-note{color:#dbeafe;font-size:13px;text-align:right}
-nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}nav .wrap{display:flex;gap:4px;overflow-x:auto}nav a{white-space:nowrap;text-decoration:none;color:#334155;font-weight:700;padding:13px 14px;font-size:14px}nav a:hover{background:#eff6ff;color:var(--blue)}
-.hero{padding:28px 0 20px}.hero-card{background:linear-gradient(115deg,#10233f,#244f9e);color:white;border-radius:22px;padding:28px;display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:center;box-shadow:0 12px 30px #10233f18}.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:11px;color:#bfdbfe;font-weight:800}.hero h2{font-size:clamp(27px,4vw,42px);line-height:1.13;margin:9px 0 12px;letter-spacing:-1px}.hero p{color:#dbeafe;margin:0;max-width:620px}.searchbox{background:white;padding:8px;border-radius:12px;display:flex;gap:8px;margin-top:20px;max-width:650px}.searchbox input{width:100%;border:0;outline:0;padding:10px;font-size:15px;min-width:0}.searchbox button{background:var(--blue);color:white;border:0;border-radius:8px;padding:10px 15px;font-weight:800;cursor:pointer}.hero-side{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:17px;background:#ffffff12;border:1px solid #ffffff28;border-radius:14px}.stat strong{display:block;font-size:24px}.stat span{font-size:12px;color:#dbeafe}
-.quicklinks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 26px}.quick{display:flex;align-items:center;gap:12px;padding:16px;background:white;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);font-weight:800;box-shadow:0 3px 10px #10233f05}.quick .ico{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#eff6ff;font-size:21px}.quick small{display:block;font-weight:500;color:var(--muted);font-size:12px}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 0 12px}.section-head h2{font-size:21px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.tag{background:#eaf0ff;color:#2148a7;border-radius:99px;padding:5px 9px;font-size:11px;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.panel{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}.panel-title{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px}.panel-title h3{margin:0;font-size:16px}.panel-title .symbol{font-size:19px}.items{list-style:none;padding:0;margin:0}.item{padding:14px 17px;border-bottom:1px solid #edf1f7}.item:last-child{border-bottom:0}.item a{font-weight:750;text-decoration:none;display:block;line-height:1.4}.item a:hover{text-decoration:underline}.meta{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:11px;color:var(--muted)}.empty{padding:17px;color:var(--muted);font-size:13px}.all-results{margin:18px 0 30px;padding:17px 19px;background:#fff;border:1px solid var(--line);border-radius:14px}.all-results h3{margin:0 0 8px;font-size:16px}.all-results p{margin:0;color:var(--muted);font-size:13px}
-.notice{background:#fff8e8;border:1px solid #f5d58c;color:#654d17;padding:14px 16px;border-radius:12px;font-size:13px;margin:24px 0}.contact{background:#eaf3ff;border-radius:18px;padding:22px;margin:24px 0 34px;display:flex;justify-content:space-between;align-items:center;gap:16px}.contact h2{margin:0;font-size:20px}.contact p{margin:5px 0 0;color:#4b607e;font-size:13px}.contact a{background:var(--blue);color:white;text-decoration:none;font-weight:800;padding:11px 16px;border-radius:9px;white-space:nowrap}
-footer{background:#0b1729;color:#b8c5d8;padding:25px 0;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}footer strong{color:white}.no-match{display:none;padding:14px;color:var(--muted)}
-@media(max-width:800px){.hero-card{grid-template-columns:1fr}.hero-side{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.grid .panel:last-child{grid-column:span 2}.head-note{display:none}}
-@media(max-width:560px){.wrap{width:min(100% - 22px,1160px)}.head{padding:17px 0}.brand h1{font-size:25px}.hero-card{padding:21px}.hero-side{grid-template-columns:repeat(2,1fr)}.quicklinks{grid-template-columns:1fr}.quick{padding:12px}.grid{grid-template-columns:1fr}.grid .panel:last-child{grid-column:auto}.section-head{align-items:start}.contact{align-items:flex-start;flex-direction:column}.searchbox button{padding:9px 11px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff}
+header{background:#9f1239;color:#fff;text-align:center;padding:14px}
+header h1{margin:0;font-size:24px}
+header small{opacity:.9}
+nav{background:#000;display:flex;overflow-x:auto}
+nav a{color:#fff;text-decoration:none;padding:12px 14px;font-size:14px;font-weight:bold;white-space:nowrap}
+.ticker{background:#fef3c7;overflow:hidden;white-space:nowrap;padding:8px 0;border-bottom:2px solid #f59e0b}
+.ticker span{display:inline-block;padding-left:100%;animation:scroll 50s linear infinite;font-weight:bold;color:#9f1239}
+@keyframes scroll{to{transform:translateX(-100%)}}
+.search{padding:10px}
+.search input{width:100%;padding:12px;font-size:16px;border:2px solid #9f1239;border-radius:8px}
+.hot{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:0 10px}
+.hot a{color:#fff;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;padding:12px 6px;border-radius:4px}
+.cols{display:grid;grid-template-columns:1fr;gap:10px;padding:10px}
+@media(min-width:800px){.cols{grid-template-columns:repeat(3,1fr)}.hot{grid-template-columns:repeat(4,1fr)}}
+.box{border:2px solid #f59e0b;scroll-margin-top:50px}
+.box h2{margin:0;background:#9f1239;color:#fff;text-align:center;padding:8px;font-size:18px}
+.box ul{margin:0;padding:10px 10px 10px 26px}
+.box li{margin-bottom:10px;font-size:14px}
+.box a{color:#1d4ed8;font-weight:bold}
+.box small{display:block;color:#666}
+footer{background:#000;color:#ccc;text-align:center;padding:14px;font-size:12px;margin-top:10px}
 </style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><span>MyJob • Your career update desk</span><span id="updated">Official links • Verify before applying</span></div></div>
-<header><div class="wrap head"><div class="brand"><div class="logo">M</div><div><h1>MyJob</h1><p>Jobs · Results · Admit Cards · Exam Updates</p></div></div><div class="head-note">Clear information. Official sources.<br>Made for job seekers in India.</div></div></header>
-<nav><div class="wrap"><a href="#">Home</a><a href="#jobs">Government Jobs</a><a href="#private">Private Jobs</a><a href="#outsourcing">Outsourcing Jobs</a><a href="#results">Results</a><a href="#admit">Admit Cards</a><a href="#exams">Upcoming Exams</a></div></nav>
-<main class="wrap">
-<section class="hero"><div class="hero-card"><div><div class="eyebrow">Find your next opportunity</div><h2>One place for your<br>next career move.</h2><p>Search job updates, exam results and admit card links. Always confirm eligibility, fees and deadlines on the official website.</p><form class="searchbox" id="searchForm"><input id="search" type="search" placeholder="Search jobs, results, exams..." aria-label="Search listings"><button type="submit">Search</button></form></div><div class="hero-side"><div class="stat"><strong id="countJobs">0</strong><span>Job links</span></div><div class="stat"><strong id="countResults">0</strong><span>Results</span></div><div class="stat"><strong id="countAdmit">0</strong><span>Admit cards</span></div><div class="stat"><strong id="countExams">0</strong><span>Exam updates</span></div></div></div></section>
-<section class="quicklinks" aria-label="Popular categories">
-<a class="quick" href="#jobs"><span class="ico">🏛️</span><span>Government Jobs<small>Official recruitment sites</small></span></a>
-<a class="quick" href="#results"><span class="ico">📋</span><span>Results<small>Check result announcements</small></span></a>
-<a class="quick" href="#admit"><span class="ico">🎫</span><span>Admit Cards<small>Exam hall-ticket links</small></span></a>
-</section>
-<div class="section-head"><div><h2>Latest opportunities & updates</h2><p>Listings are loaded from the editable data.json file.</p></div><span class="tag">LIVE DATA FILE</span></div>
-<section class="grid" id="listingGrid">
-<article class="panel" id="jobs"><div class="panel-title"><h3>🏛️ Government Jobs</h3><span class="symbol">↗</span></div><ul class="items" id="list-jobs"></ul></article>
-<article class="panel" id="private"><div class="panel-title"><h3>💼 Private Jobs</h3><span class="symbol">↗</span></div><ul class="items" id="list-privateJobs"></ul></article>
-<article class="panel" id="outsourcing"><div class="panel-title"><h3>🤝 Outsourcing Jobs</h3><span class="symbol">↗</span></div><ul class="items" id="list-outsourcingJobs"></ul></article>
-<article class="panel" id="results"><div class="panel-title"><h3>📋 Results</h3><span class="symbol">↗</span></div><ul class="items" id="list-results"></ul></article>
-<article class="panel" id="admit"><div class="panel-title"><h3>🎫 Admit Cards</h3><span class="symbol">↗</span></div><ul class="items" id="list-admit"></ul></article>
-<article class="panel" id="exams"><div class="panel-title"><h3>🗓️ Upcoming Exams</h3><span class="symbol">↗</span></div><ul class="items" id="list-upcomingExams"></ul></article>
-</section>
-<div class="all-results"><h3 id="searchTitle">Quick official links</h3><p id="searchHint">These are official portal links, not a claim that a particular vacancy is open today.</p><ul class="items" id="list-hot" style="margin-top:8px"></ul><div class="no-match" id="noMatch">No matching listings. Try a different keyword.</div></div>
-<div class="notice" id="notice">Notice: Verify each notification, eligibility rule, fee and deadline on the issuing authority's official website. MyJob is an information portal and does not guarantee recruitment or selection.</div>
-<section class="contact"><div><h2>Want to suggest a correction?</h2><p>For now, use the repository owner’s contact channel to report incorrect links or missing updates.</p></div><a href="https://github.com/AdityaGaurav11/mera-result/issues" target="_blank" rel="noopener">Report an issue ↗</a></section>
-</main>
-<footer><div class="wrap foot"><div><strong>MyJob</strong><br>Jobs · Results · Admit Cards</div><div>Always verify information with the official authority.<br>© MyJob • Information may change without notice.</div></div></footer>
+<header>
+  <h1>MERA SARKARI PORTAL</h1>
+  <small>Jobs | Result | Admit Card</small>
+</header>
+<nav>
+  <a href="#">Home</a>
+  <a href="#box-jobs">Latest Job</a>
+  <a href="#box-admit">Admit Card</a>
+  <a href="#box-results">Results</a>
+</nav>
+<div class="ticker"><span id="ticker">Loading...</span></div>
+<div class="search"><input id="q" placeholder="Job, result ya admit card search karo..."></div>
+<div class="hot" id="hot"></div>
+<div class="cols">
+  <div class="box" id="box-results"><h2>Result</h2><ul id="l-results"></ul></div>
+  <div class="box" id="box-admit"><h2>Admit Card</h2><ul id="l-admit"></ul></div>
+  <div class="box" id="box-jobs"><h2>Latest Job</h2><ul id="l-jobs"></ul></div>
+</div>
+<footer>Disclaimer: Hamesha official website se jaankari ki pushti kar lein.</footer>
 <script>
-const keys = ["jobs","privateJobs","outsourcingJobs","results","admit","upcomingExams"];
-const labels = {jobs:"Government Jobs",privateJobs:"Private Jobs",outsourcingJobs:"Outsourcing Jobs",results:"Results",admit:"Admit Cards",upcomingExams:"Upcoming Exams"};
-let data = {};
-const safe = value => String(value ?? "");
-function validLink(url){try{const u=new URL(url,location.href);return ["http:","https:"].includes(u.protocol)}catch{return false}}
-function makeItem(item){
-  const li=document.createElement("li");li.className="item";
-  const a=document.createElement("a");a.textContent=safe(item.title)||"Untitled listing";
-  if(validLink(item.link)){a.href=item.link;a.target="_blank";a.rel="noopener noreferrer"}else{a.href="#";a.title="Link not available"}
-  li.appendChild(a);
-  const meta=document.createElement("div");meta.className="meta";
-  const date=document.createElement("span");date.textContent=safe(item.date||item.category||"Official source");
-  const status=document.createElement("span");status.textContent=item.status?safe(item.status):"Open link ↗";
-  meta.append(date,status);li.appendChild(meta);return li;
-}
+let D={};
+const colors=["#65a30d","#1d4ed8","#ea580c","#b91c1c","#dc2626","#16a34a","#c026d3","#0284c7"];
+function li(i){return `<li><a href="${i.link}" target="_blank" rel="noopener">${i.title}</a><small>${i.date||""}</small></li>`}
 function render(){
-  const q=safe(document.getElementById("search").value).trim().toLowerCase();
-  let total=0;
-  keys.forEach(key=>{
-    const list=document.getElementById("list-"+key);list.replaceChildren();
-    const filtered=(Array.isArray(data[key])?data[key]:[]).filter(item=>
-      [item.title,item.date,item.category,item.status].some(v=>safe(v).toLowerCase().includes(q)));
-    filtered.forEach(item=>{list.appendChild(makeItem(item));total++});
-    if(!filtered.length){const li=document.createElement("li");li.className="empty";li.textContent=q?"No matching items.":"No listings added yet.";list.appendChild(li)}
+  const q=document.getElementById("q").value.toLowerCase();
+  const f=a=>(a||[]).filter(i=>i.title.toLowerCase().includes(q));
+  ["results","admit","jobs"].forEach(k=>{
+    document.getElementById("l-"+k).innerHTML=f(D[k]).map(li).join("")||"<li>Kuch nahi mila</li>";
   });
-  const hot=document.getElementById("list-hot");hot.replaceChildren();
-  const hotItems=(Array.isArray(data.hot)?data.hot:[]).filter(item=>[item.title,item.date].some(v=>safe(v).toLowerCase().includes(q)));
-  hotItems.forEach(item=>hot.appendChild(makeItem(item)));
-  document.getElementById("noMatch").style.display=hotItems.length?"none":"block";
-  document.getElementById("searchTitle").textContent=q?"Search results & official links":"Quick official links";
-  document.getElementById("searchHint").textContent=q?`Found ${total+hotItems.length} matching item(s) across all categories.`:"These are official portal links, not a claim that a particular vacancy is open today.";
 }
-fetch("./data.json").then(response=>{if(!response.ok)throw new Error("data.json could not be loaded");return response.json()}).then(d=>{
-  data=d;
-  const n=key=>(Array.isArray(data[key])?data[key].length:0);
-  document.getElementById("countJobs").textContent=n("jobs")+n("privateJobs")+n("outsourcingJobs");
-  document.getElementById("countResults").textContent=n("results");
-  document.getElementById("countAdmit").textContent=n("admit");
-  document.getElementById("countExams").textContent=n("upcomingExams");
-  document.getElementById("updated").textContent=data.updatedAt?`Data reviewed: ${data.updatedAt} • Verify before applying`:"Official links • Verify before applying";
-  if(data.notice)document.getElementById("notice").textContent=data.notice;
+fetch("data.json").then(r=>r.json()).then(d=>{
+  D=d;
+  const hot=d.hot||(d.jobs||[]).slice(0,4);
+  document.getElementById("hot").innerHTML=hot.map((i,n)=>`<a href="${i.link}" target="_blank" rel="noopener" style="background:${colors[n%colors.length]}">${i.title}</a>`).join("");
+  document.getElementById("ticker").textContent=(d.jobs||[]).map(i=>i.title).join("  ||  ");
   render();
-}).catch(err=>{
-  document.getElementById("updated").textContent="Listing data unavailable";
-  document.querySelectorAll(".items").forEach(el=>{el.replaceChildren();const li=document.createElement("li");li.className="empty";li.textContent="Could not load data.json. Check that the site is hosted over HTTP/HTTPS.";el.appendChild(li)});
-  console.error(err);
-});
-document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();render()});
-document.getElementById("search").addEventListener("input",render);
+}).catch(()=>{document.getElementById("ticker").textContent="Data load nahi hua"});
+document.getElementById("q").oninput=render;
 </script>
 </body>
 </html>
