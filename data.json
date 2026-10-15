@@ -6,10 +6,10 @@
   "Railway Group D Bharti 2026":[
   {"title": "Example Bharti 2026 - 500 Posts", "date": "09 Oct 2026", "link": "https://example.com"}
 
-    
+
   ],"SSC Jobs": [
   {"title": "SSC CGL 2026 Notification", "date": "10 Oct 2026", "link": "https://ssc.gov.in"}]
-  
+
   "results": [
     {"title": "Example Exam Result 2026", "date": "09 Oct 2026", "link": "https://example.com"}
   ],
@@ -19,5 +19,5 @@
 }
 "SSC Jobs": [
   {"title": "SSC CGL 2026 Notification", "date": "10 Oct 2026", "link": "https://ssc.gov.in"}
-  
+
   }
