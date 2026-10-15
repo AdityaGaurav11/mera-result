@@ -1,0 +1,29 @@
+
+{
+  "jobs": [
+    {
+      "title": "UP Police Constable Recruitment",
+      "date": "15 Oct 2026",
+      "link": "https://uppbpb.gov.in"
+    },
+    {
+      "title": "SSC CGL Notification",
+      "date": "15 Oct 2026",
+      "link": "https://ssc.gov.in"
+    }
+  ],
+  "results": [
+    {
+      "title": "Example Exam Result",
+      "date": "15 Oct 2026",
+      "link": "https://example.com"
+    }
+  ],
+  "admit": [
+    {
+      "title": "Example Admit Card",
+      "date": "15 Oct 2026",
+      "link": "https://example.com"
+    }
+  ]
+}
